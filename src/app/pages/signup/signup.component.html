@@ -1,21 +1,17 @@
-<div class='container' >
+<h1>Healthcare Provider</h1>
 
+<h2>Login</h2>
 
+<form (submit)="onSubmit($event)">
+  <div class="column">
+    <label for="email">Email</label>
+    <input class="input" type="text" />
+  </div>
 
-        <h3>Healthcare Provider</h3>
+  <div class="column">
+    <label for="email">Password</label>
+    <input class="input" type="text" />
+  </div>
 
-        <h1>Login</h1>
-
-        <div>
-            <label for="email">Email</label>
-            <input type="text"> 
-        </div>
-
-        <div>
-            <label for="email">Password</label>
-            <input type="text"> 
-        </div>
-
-        <button>Login</button>
-
-</div>
+  <button class="btn" type="submit">Login</button>
+</form>
