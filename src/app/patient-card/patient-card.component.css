@@ -1,0 +1,21 @@
+.card {
+  display: flex;
+  flex-direction: row;
+  background-color: #8d8d8d;
+  gap: 10px;
+}
+
+.card div {
+  display: flex;
+  flex-direction: column;
+  width: 33%;
+  text-align: center;
+}
+
+.card div h2 {
+  margin: 0;
+}
+
+.card h3 {
+  margin: 0;
+}

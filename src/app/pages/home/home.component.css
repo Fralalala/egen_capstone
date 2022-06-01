@@ -1,0 +1,35 @@
+:host {
+  height: 100%;
+  width: 100%;
+  padding: 10px 10%;
+  box-sizing: border-box;
+}
+
+.clear_margin {
+  margin: 0;
+}
+
+.main_card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.patient_container_card {
+  background-color: #6e6e6e;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  box-sizing: border-box;
+}
+
+.new_patient {
+  font-size: 1.3em;
+}
+
+p {
+  margin: 0;
+}

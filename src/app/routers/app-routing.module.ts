@@ -1,4 +1,4 @@
-import { LandingComponent } from './../pages/landing/landing.component';
+import { HomeComponent } from './../pages/home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SignupComponent } from '../pages/signup/signup.component';
@@ -10,7 +10,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: LandingComponent,
+    component: HomeComponent,
   },
 ];
 
