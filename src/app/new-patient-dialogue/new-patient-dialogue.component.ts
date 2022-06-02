@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { HomeComponent } from '../pages/home/home.component';
 import { MatDialogRef } from '@angular/material/dialog';
+import { PatientService } from '../service/patient.service';
 
 @Component({
   selector: 'app-new-patient-dialogue',
@@ -269,61 +270,59 @@ export class NewPatientDialogueComponent implements OnInit {
     'Vietnamese',
   ];
 
-  @Input() newFirstName?: string;
-  @Input() newLastName?: string;
-  @Input() newCountry?: string;
-  @Input() newSex?: string;
-  @Input() newDate?: Date;
-  @Input() newLanguage?: string;
+  @Input() newFirstName: string;
+  @Input() newLastName: string;
+  @Input() newCountry: string;
+  @Input() newSex: number;
+  @Input() newDate: Date;
+  @Input() newLanguage: string;
 
-  constructor(public dialogRef: MatDialogRef<HomeComponent>) {
+  constructor(
+    public dialogRef: MatDialogRef<HomeComponent>,
+    public patientService: PatientService
+  ) {
     this.newFirstName = '';
     this.newLastName = '';
     this.newCountry = '';
-    this.newSex = '';
+    this.newSex = 0;
     this.newLanguage = '';
+    this.newDate = new Date();
   }
 
   ngOnInit(): void {}
 
   onCountryChange(value: string) {
     this.newCountry = value;
-    console.log(value);
   }
 
   onLanguageChange(value: any) {
     this.newLanguage = value;
-    console.log(value);
   }
 
-  onInputChange(value: any) {
-    console.log(value);
-  }
+  onInputChange(value: any) {}
 
   onFirstNameInput(value: string) {
     this.newFirstName = value;
-    console.log(this.newFirstName);
   }
 
   onLastNameInput(value: string) {
     this.newLastName = value;
-    console.log(this.newLastName);
   }
 
-  onDateChange(value?: Date) {
+  onDateChange(value: Date) {
     this.newDate = value;
-    console.log(value);
   }
 
   onSubmit(event: SubmitEvent) {
     event.preventDefault();
-    console.log('form submit', {
-      newFirstName: this.newFirstName,
-      newLastName: this.newLastName,
-      newCountry: this.newCountry,
-      newSex: this.newSex,
-      newDate: this.newDate,
-      newLanguage: this.newLanguage,
+
+    this.patientService.addPatient({
+      firstName: this.newFirstName,
+      lastName: this.newLastName,
+      country: this.newCountry,
+      sex: this.newSex,
+      birthDate: this.newDate,
+      language: this.newLanguage,
     });
 
     this.dialogRef.close();

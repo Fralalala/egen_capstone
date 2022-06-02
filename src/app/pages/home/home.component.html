@@ -12,11 +12,12 @@
     </button>
   </div>
 
-  <mat-card class="patient_container_card">
-    <app-patient-card
-      [patientName]="'Sarah Connor'"
-      [gender]="'Female'"
-      [date]="'20/4/2022'"
-    ></app-patient-card>
-  </mat-card>
+  <app-patient-card
+    *ngFor="let patient of patientService.patients"
+    [patientName]="patient.firstName"
+    [gender]="patient.sex"
+    [date]="patient.birthDate"
+  ></app-patient-card>
+
+  <mat-card *ngIf="!patientService.patients?.length "> It's empty </mat-card>
 </mat-card>
