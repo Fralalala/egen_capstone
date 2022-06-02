@@ -1,0 +1,73 @@
+<mat-dialog-content class="mat_content">
+  <h1>New Patient</h1>
+  <form (submit)="onSubmit($event)" id="patient_form" class="form_container">
+    <div class="input_container">
+      <mat-form-field appearance="fill">
+        <mat-label>First Name</mat-label>
+        <input
+          matInput
+          #firstName
+          (keyup)="onFirstNameInput(firstName.value)"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Last Name</mat-label>
+        <input
+          matInput
+          #lastName
+          (keyup)="onLastNameInput(lastName.value)"
+          required
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="input_container">
+      <mat-form-field appearance="fill">
+        <mat-label>Birth Date</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          (dateChange)="onDateChange($event.value)"
+          required
+        />
+        <mat-hint>DD/MM/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Country of Origin</mat-label>
+        <mat-select (selectionChange)="onCountryChange($event.value)" required>
+          <mat-option *ngFor="let country of countries" [value]="country">
+            {{ country }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Language</mat-label>
+        <mat-select (selectionChange)="onLanguageChange($event.value)" required>
+          <mat-option *ngFor="let language of languages" [value]="language">
+            {{ language }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="radio_component_container">
+      <label id="sex_label">Sex: </label>
+      <mat-radio-group class="radio_container" aria-labelledby="sex_label" required>
+        <mat-radio-button value="1">Male</mat-radio-button>
+        <mat-radio-button value="0">Female</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button type="submit" cdkFocusInitial form="patient_form">
+    Save
+  </button>
+</mat-dialog-actions>

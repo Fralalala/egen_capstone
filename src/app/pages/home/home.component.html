@@ -2,14 +2,21 @@
   <div class="header">
     <h2 class="clear_margin">My Patients</h2>
 
-    <button mat-raised-button color="accent" class="new_patient">
+    <button
+      mat-raised-button
+      color="accent"
+      class="new_patient"
+      (click)="openDialog()"
+    >
       Add new Patient
     </button>
   </div>
 
-  <mat-card class="patient_container_card"> 
-        
-    <app-patient-card [patientName]="'Sarah Connor'" [gender]="'Female'" [date]="'20/4/2022'" ></app-patient-card>
-
-</mat-card>
+  <mat-card class="patient_container_card">
+    <app-patient-card
+      [patientName]="'Sarah Connor'"
+      [gender]="'Female'"
+      [date]="'20/4/2022'"
+    ></app-patient-card>
+  </mat-card>
 </mat-card>
