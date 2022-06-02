@@ -2,6 +2,7 @@ import { HomeComponent } from './../pages/home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SignupComponent } from '../pages/signup/signup.component';
+import { PatientRecordComponent } from '../pages/patient-record/patient-record.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,10 @@ const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
+  },
+  {
+    path: 'patient/:patientId/records',
+    component: PatientRecordComponent,
   },
 ];
 
