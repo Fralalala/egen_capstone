@@ -1,1 +1,70 @@
-<p>patient-record works!</p>
+<mat-card class="main_card" *ngIf="!currentPatient; else health_record">
+  <h2 class="clear_margin">Patient does not exist</h2>
+</mat-card>
+
+<ng-template #health_record>
+  <mat-card class="main_card">
+    <h2 class="clear_margin center_text">
+      Health Record: {{ currentPatient?.firstName }}
+      {{ currentPatient?.lastName }}
+    </h2>
+
+    <mat-card class="patient_content_container">
+      <div class="patient_record_container">
+        <app-patient-record-row
+          *ngFor="
+            let patientRecord of patientService.getPatientRecords(
+              currentPatient?.id
+            )
+          "
+          (click)="setCurrentPatientRecord(patientRecord)"
+          [patientRecord]="patientRecord"
+        ></app-patient-record-row>
+      </div>
+
+      <div class="patient_record_info">
+        <div>
+          <h2>Symptoms</h2>
+          <h4>{{ currentPatientRecord?.symptom || "---" }}</h4>
+        </div>
+
+        <div>
+          <h2>Diagnosis</h2>
+          <h4>{{ currentPatientRecord?.diagnosis || "---" }}</h4>
+        </div>
+
+        <div>
+          <h2 class="clear_margin">Prescribed course of Treatment</h2>
+          <div *ngIf="!currentPatientRecord?.treatments?.length">---</div>
+
+          <ul>
+            <li
+              *ngFor="let treatment of currentPatientRecord?.treatments"
+              class="treatment"
+            >
+              {{ treatment }}
+            </li>
+          </ul>
+        </div>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Treatment</mat-label>
+
+          <mat-select [(value)]="currentStatus">
+            <mat-option
+              *ngFor="let status of patientService.getStatusOptions()"
+              [value]="status"
+            >
+              {{ status }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </mat-card>
+
+    <button mat-raised-button class="back_btn" (click)="toPatientList()" >
+      <mat-icon> arrow_back_ios </mat-icon>
+      Patient List
+    </button>
+  </mat-card>
+</ng-template>

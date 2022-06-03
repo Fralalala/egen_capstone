@@ -17,6 +17,10 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
+import { PatientRecordComponent } from './pages/patient-record/patient-record.component';
+import { PatientRecordRowComponent } from './pages/patient-record/patient-record-row/patient-record-row.component';
+import { AddPatientRecordComponent } from './pages/patient-record/add-patient-record/add-patient-record.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -26,6 +30,9 @@ import { MatRadioModule } from '@angular/material/radio';
     HomeComponent,
     PatientCardComponent,
     NewPatientDialogueComponent,
+    PatientRecordComponent,
+    PatientRecordRowComponent,
+    AddPatientRecordComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,6 +46,7 @@ import { MatRadioModule } from '@angular/material/radio';
     MatNativeDateModule,
     MatSelectModule,
     MatRadioModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

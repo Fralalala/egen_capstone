@@ -10,12 +10,12 @@ const routes: Routes = [
     component: SignupComponent,
   },
   {
-    path: '',
-    component: HomeComponent,
-  },
-  {
     path: 'patient/:patientId/records',
     component: PatientRecordComponent,
+  },
+  {
+    path: '',
+    component: HomeComponent,
   },
 ];
 

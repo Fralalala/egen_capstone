@@ -8,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class PatientCardComponent implements OnInit {
   @Input() patientName?: string;
   @Input() gender?: number;
-  @Input() date?: Date;
+  @Input() date?: string;
 
   constructor() {}
 

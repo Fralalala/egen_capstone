@@ -1,0 +1,34 @@
+:host {
+  width: 100%;
+  padding: 0 10px;
+  border: 1px solid #bbbbbb;
+  border-radius: 9px;
+  text-align: center;
+  max-height: 140px;
+  overflow: auto;
+  cursor: pointer;
+  transition: 0.1s;
+  box-sizing: border-box;
+}
+
+:host:hover {
+  border: 3px solid green;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+}
+
+.header h3 {
+  width: 50%;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+}
+
+.content h2 {
+  width: 50%;
+}

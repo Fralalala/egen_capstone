@@ -9,15 +9,16 @@
       (click)="openDialog()"
     >
       Add new Patient
-    </button>
+  </button>
   </div>
 
   <app-patient-card
-    *ngFor="let patient of patientService.patients"
+    *ngFor="let patient of patientService.getPatientArray()"
     [patientName]="patient.firstName"
     [gender]="patient.sex"
     [date]="patient.birthDate"
+    (click)="toPatientRecord(patient.id)"
   ></app-patient-card>
 
-  <mat-card *ngIf="!patientService.patients?.length "> It's empty </mat-card>
+  <mat-card *ngIf="!patientService.getPatientArray().length "> It's empty </mat-card>
 </mat-card>

@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { HomeComponent } from '../pages/home/home.component';
 import { MatDialogRef } from '@angular/material/dialog';
 import { PatientService } from '../service/patient.service';
+import { Status } from 'src/enums/patientEnums';
 
 @Component({
   selector: 'app-new-patient-dialogue',
@@ -316,13 +317,30 @@ export class NewPatientDialogueComponent implements OnInit {
   onSubmit(event: SubmitEvent) {
     event.preventDefault();
 
+    const newId = Math.floor(Math.random() * 100001);
+
     this.patientService.addPatient({
+      id: newId,
       firstName: this.newFirstName,
       lastName: this.newLastName,
       country: this.newCountry,
       sex: this.newSex,
-      birthDate: this.newDate,
+      birthDate: this.newDate.toLocaleString(),
       language: this.newLanguage,
+    });
+
+    this.patientService.addPatientRecord({
+      patientId: newId,
+      consultDate: new Date().toLocaleString(),
+      diagnosis: 'Diagnosis default value',
+      status: Status.ONGOING_TREATMENT,
+      symptom: 'Symptom default value',
+      title: 'Default title',
+      treatments: [
+        'Given an antibiotic.',
+        'Surgery halted',
+        'Prescribed drugs',
+      ],
     });
 
     this.dialogRef.close();
